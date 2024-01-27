@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 2048-game
+  labels:
+    app: 2048-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-2048
+  template:
+    metadata:
+      labels:
+        app: my-2048
+    spec:
+      containers:
+        - name: 2048-game
+          image: slamoureux/2048:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+
+
+# minikube service nginx-service --url

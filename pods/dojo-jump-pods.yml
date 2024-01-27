@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dojo-jump-pod
+  annotations:
+    author: "Stephan"
+spec:
+  containers:
+    - name: dojo-jump-game
+      image: slamoureux/dojo-jump:latest
+      ports:
+      - containerPort: 80
+
+# kubectl apply -f dojo-jump-pods.yml

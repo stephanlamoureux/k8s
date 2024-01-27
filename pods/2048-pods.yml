@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: 2048-game-pod
+  labels:
+    app: web
+    environment: production
+  annotations:
+    author: "Stephan"
+spec:
+  containers:
+    - name: 2048-game
+      image: slamoureux/2048:latest
+      ports:
+      - containerPort: 80

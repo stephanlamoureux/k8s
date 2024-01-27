@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: dojo-jump
+  labels:
+    app: dojo-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-dojo
+  template:
+    metadata:
+      labels:
+        app: my-dojo
+    spec:
+      containers:
+        - name: dojo-jump
+          image: slamoureux/dojo-jump:latest
+          ports:
+            - containerPort: 80
+
+# minikube service nginx-service --url

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-redis-pod
+  labels:
+    app: web
+    environment: production
+  annotations:
+    author: "Stephan"
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+      - containerPort: 80
+    - name: redis
+      image: redis
+
+# kubectl apply -f nginx-pods.yml
+
+# kubectl exec -it pod/nginx-redis-pod -- /bin/bash
+# apt-get update
+# apt-get install curl
+# curl localhost
+
+# kubectl get pods --all-namespaces
+# kubectl describe pod nginx-redis-pod
+# kubectl exec -it pod/nginx-redis-pod -c nginx -- /bin/bash
+
+# Querying labels
+# kubectl get pods -l 'app=web,environment=production'

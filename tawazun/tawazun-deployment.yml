@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+
+kind: Deployment
+metadata:
+  name: tawazun
+  labels:
+    app: tawazun-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tawazun
+  template:
+    metadata:
+      labels:
+        app: tawazun
+    spec:
+      containers:
+        - name: tawazun-frontend
+          image: slamoureux/tawazun:latest
+          env:
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: tawazun-config-map
+                  key: database_url
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: tawazun-secret
+                  key: port
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: tawazun-secret
+                  key: database_name
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: tawazun-secret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tawazun-secret
+                  key: password
+          ports:
+            - containerPort: 8080

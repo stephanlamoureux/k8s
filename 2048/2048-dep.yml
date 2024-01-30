@@ -1,4 +1,5 @@
 apiVersion: apps/v1
+
 kind: Deployment
 metadata:
   name: 2048-game
@@ -23,6 +24,3 @@ spec:
               cpu: "500m"
           ports:
             - containerPort: 80
-
-
-# minikube service nginx-service --url

@@ -12,5 +12,5 @@ spec:
   volumes:
     - name: host-volume-demo
       hostPath:
-        path: /data
+        path: "/home/steve/code/codeplatoon/k8s/hostPath"
         type: Directory

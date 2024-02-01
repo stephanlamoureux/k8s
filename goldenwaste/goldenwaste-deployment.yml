@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goldenwaste-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goldenwaste
+  template:
+    metadata:
+      labels:
+        app: goldenwaste
+    spec:
+      containers:
+      - name: goldenwaste
+        image: matthewjames4187/goldenwaste:latest
+        env:
+          - name: GOLDEN_DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: golden-secret
+                key: GOLDEN_DB_USERNAME
+
+          - name: GOLDEN_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: golden-secret
+                key: GOLDEN_DB_PASSWORD
+
+          - name: GOLDEN_DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: golden-configmap
+                key: GOLDEN_DB_NAME
+
+          - name: GOLDEN_DB_URL
+            valueFrom:
+              configMapKeyRef:
+                name: golden-configmap
+                key: GOLDEN_DB_URL
+          - name: GOLDEN_DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: golden-configmap
+                key: GOLDEN_DB_PORT

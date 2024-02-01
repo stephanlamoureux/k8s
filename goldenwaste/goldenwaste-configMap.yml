@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: goldenwaste-configmap
+data:
+  MYSQL_DATABASE: goldenwaste
+  GOLDEN_DB_NAME: goldenwaste
+  GOLDEN_DB_URL: mysql
+  GOLDEN_DB_PORT: "3306"

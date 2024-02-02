@@ -12,3 +12,5 @@ spec:
   selector:
     matchLabels:
       team: production
+
+# PVC are namespace bound

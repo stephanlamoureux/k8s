@@ -13,3 +13,5 @@ spec:
   storageClassName: slow
   hostPath:
     path: "/data"
+
+# PV is not namespace bound
